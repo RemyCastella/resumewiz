@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function EducationInputs({ education, changeEducation }) {
-  const { institution, degree, dates } = education[0];
+  const [activeId, setActiveId] = useState(0);
+  const { institution, degree, dates } = education[activeId];
 
   return (
     <form className="personal-detail-form">
@@ -10,27 +11,27 @@ export default function EducationInputs({ education, changeEducation }) {
         Institution:
         <input
           type="text"
-          name={institution}
+          name="institution"
           value={institution}
-          onChange={changeEducation}
+          onChange={(event) => changeEducation(event, activeId)}
         />
       </label>
       <label>
         Degree:
         <input
           type="text"
-          name={degree}
+          name="degree"
           value={degree}
-          onChange={changeEducation}
+          onChange={(event) => changeEducation(event, activeId)}
         />
       </label>
       <label>
         Dates:
         <input
           type="text"
-          name={dates}
+          name="dates"
           value={dates}
-          onChange={changeEducation}
+          onChange={(event) => changeEducation(event, activeId)}
         />
       </label>
     </form>

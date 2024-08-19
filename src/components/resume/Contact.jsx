@@ -6,11 +6,10 @@ export default function Contact({ personalDetails }) {
   return (
     <>
       <h2>Contacts</h2>
-      <ul>
-        {tel && <li>{tel}</li>}
-        {email && <li>{email}</li>}
-        {website && <li>{website}</li>}
-      </ul>
+
+      {tel && <li>{tel}</li>}
+      {email && <li>{email}</li>}
+      {website && <li>{website}</li>}
     </>
   );
 }

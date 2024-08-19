@@ -35,15 +35,37 @@ export default function App() {
 
   const [education, setEducation] = useState([
     {
+      id: 0,
       institution: 'University of Vermont',
       degree: 'Bachelors of Science, Neuroscience',
       dates: '2015-2019',
     },
   ]);
 
-  function changeEducation(event) {}
+  function changeEducation(event, activeId) {
+    const { name, value } = event.target;
+    setEducation((prevEducation) =>
+      prevEducation.map((item) => {
+        return item.id === activeId ? { ...item, [name]: value } : item;
+      })
+    );
+  }
 
-  const [skills, setSkills] = useState(['HTML', 'CSS', 'JavaScript', 'React']);
+  const [skills, setSkills] = useState([
+    { id: 0, skill: 'HTML' },
+    { id: 1, skill: 'CSS' },
+    { id: 2, skill: 'JavaScript' },
+    { id: 3, skill: 'React' },
+  ]);
+
+  function changeSkills(event, activeId) {
+    const { name, value } = event.target;
+    setSkills((prevSkills) =>
+      prevSkills.map((item) => {
+        return item.id === activeId ? { ...item, [name]: value } : item;
+      })
+    );
+  }
 
   const [certifications, setCertifications] = useState(['JLPT N1']);
 
@@ -71,7 +93,7 @@ export default function App() {
           education={education}
           changeEducation={changeEducation}
         />
-        <SkillsInputs />
+        <SkillsInputs skills={skills} changeSkills={changeSkills} />
         <CertificationsInputs />
         <ProfileInputs />
         <JobInputs />
