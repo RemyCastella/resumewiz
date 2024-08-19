@@ -67,7 +67,18 @@ export default function App() {
     );
   }
 
-  const [certifications, setCertifications] = useState(['JLPT N1']);
+  const [certifications, setCertifications] = useState([
+    { id: 0, certification: 'JLPT N1' },
+  ]);
+
+  function changeCertifications(event, activeId) {
+    const { name, value } = event.target;
+    setCertifications((prevSkills) =>
+      prevSkills.map((item) => {
+        return item.id === activeId ? { ...item, [name]: value } : item;
+      })
+    );
+  }
 
   const [profile, setProfile] = useState(
     'I am an aspiring web developer based in Hokkaido, Japan.'
@@ -84,30 +95,37 @@ export default function App() {
 
   return (
     <>
-      <section className="forms-container">
-        <PersonalDetailInputs
-          personalDetails={personalDetails}
-          changePersonalDetails={changePersonalDetails}
-        />
-        <EducationInputs
-          education={education}
-          changeEducation={changeEducation}
-        />
-        <SkillsInputs skills={skills} changeSkills={changeSkills} />
-        <CertificationsInputs />
-        <ProfileInputs />
-        <JobInputs />
-      </section>
+      <h1>Resume Wiz</h1>
 
-      <section className="resume">
-        <Header personalDetails={personalDetails} />
-        <Contact personalDetails={personalDetails} />
-        <Education education={education} />
-        <Skills skills={skills} />
-        <Certifications skills={certifications} />
-        <Profile profile={profile} />
-        <Experiences experiences={experiences} />
-      </section>
+      <main>
+        <section className="forms-container">
+          <PersonalDetailInputs
+            personalDetails={personalDetails}
+            changePersonalDetails={changePersonalDetails}
+          />
+          <EducationInputs
+            education={education}
+            changeEducation={changeEducation}
+          />
+          <SkillsInputs skills={skills} changeSkills={changeSkills} />
+          <CertificationsInputs
+            certifications={certifications}
+            changeCertifications={changeCertifications}
+          />
+          <ProfileInputs />
+          <JobInputs />
+        </section>
+
+        <section className="resume">
+          <Header personalDetails={personalDetails} />
+          <Contact personalDetails={personalDetails} />
+          <Education education={education} />
+          <Skills skills={skills} />
+          <Certifications certifications={certifications} />
+          <Profile profile={profile} />
+          <Experiences experiences={experiences} />
+        </section>
+      </main>
     </>
   );
 }

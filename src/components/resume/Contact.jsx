@@ -5,7 +5,7 @@ export default function Contact({ personalDetails }) {
 
   return (
     <>
-      <h2>Contacts</h2>
+      <h2>Contact</h2>
 
       {tel && <li>{tel}</li>}
       {email && <li>{email}</li>}
