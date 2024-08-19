@@ -1,0 +1,50 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  box-sizing: border-box;
+  --accent-color: #646cff;
+  --dark-color: #242424;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  gap: 1rem;
+}
+
+.resume {
+  border: 1px solid black;
+  padding: 1rem;
+  aspect-ratio: 1 / 1.414;
+}
+
+/* form styling */
+
+input {
+  font-size: 1.5rem;
+}
+
+label {
+  font-size: 1.2rem;
+}
+
+.forms-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.personal-detail-form {
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
