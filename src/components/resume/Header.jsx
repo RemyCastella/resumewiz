@@ -4,10 +4,9 @@ export default function Header({ personalDetails }) {
   const { fullName, jobTitle } = personalDetails;
 
   return (
-    <header>
-      <h1>{fullName}</h1>
-      <p>{jobTitle}</p>
-      <hr />
-    </header>
+    <section className="header">
+      <h1 className="header-name">{fullName.toUpperCase()}</h1>
+      <p className="header-title">{jobTitle}</p>
+    </section>
   );
 }

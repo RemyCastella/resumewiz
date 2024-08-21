@@ -13,6 +13,8 @@ import Skills from './components/resume/Skills';
 import Certifications from './components/resume/Certifications';
 import Profile from './components/resume/Profile';
 import Experiences from './components/resume/Experiences';
+import { IoSparkles } from 'react-icons/io5';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function App() {
   const [personalDetails, setPersonalDetails] = useState({
@@ -35,7 +37,19 @@ export default function App() {
 
   const [education, setEducation] = useState([
     {
-      id: 0,
+      id: uuidv4(),
+      institution: 'University of Vermont',
+      degree: 'Bachelors of Science, Neuroscience',
+      dates: '2015-2019',
+    },
+    {
+      id: uuidv4(),
+      institution: 'University of Vermont',
+      degree: 'Bachelors of Science, Neuroscience',
+      dates: '2015-2019',
+    },
+    {
+      id: uuidv4(),
       institution: 'University of Vermont',
       degree: 'Bachelors of Science, Neuroscience',
       dates: '2015-2019',
@@ -51,11 +65,29 @@ export default function App() {
     );
   }
 
+  function deleteEducation(activeId) {
+    setEducation((prevEducation) =>
+      prevEducation.filter((item) => item.id !== activeId)
+    );
+  }
+
+  function createEducation(id) {
+    setEducation((prevEd) => [
+      ...prevEd,
+      {
+        id: id,
+        institution: '',
+        degree: '',
+        dates: '',
+      },
+    ]);
+  }
+
   const [skills, setSkills] = useState([
-    { id: 0, skill: 'HTML' },
-    { id: 1, skill: 'CSS' },
-    { id: 2, skill: 'JavaScript' },
-    { id: 3, skill: 'React' },
+    { id: uuidv4(), skill: 'HTML' },
+    { id: uuidv4(), skill: 'CSS' },
+    { id: uuidv4(), skill: 'JavaScript' },
+    { id: uuidv4(), skill: 'React' },
   ]);
 
   function changeSkills(event, activeId) {
@@ -67,8 +99,29 @@ export default function App() {
     );
   }
 
+  function deleteSkill(activeId) {
+    setSkills((prevSkills) =>
+      prevSkills.filter((item) => item.id !== activeId)
+    );
+  }
+
+  function createSkill(id) {
+    setSkills((prevSkills) => [
+      ...prevSkills,
+      {
+        id: id,
+        skill: '',
+      },
+    ]);
+  }
+
   const [certifications, setCertifications] = useState([
     { id: 0, certification: 'JLPT N1' },
+    { id: 1, certification: 'JLPT N1' },
+    { id: 2, certification: 'JLPT N1' },
+    { id: 3, certification: 'JLPT N1' },
+    { id: 4, certification: 'JLPT N1' },
+    { id: 5, certification: 'JLPT N1' },
   ]);
 
   function changeCertifications(event, activeId) {
@@ -80,22 +133,96 @@ export default function App() {
     );
   }
 
+  function deleteCertification(activeId) {
+    setCertifications((prevCerts) =>
+      prevCerts.filter((item) => item.id !== activeId)
+    );
+  }
+
+  function createCertification(id) {
+    setCertifications((prevCert) => [
+      ...prevCert,
+      {
+        id: id,
+        certification: '',
+      },
+    ]);
+  }
+
   const [profile, setProfile] = useState(
     'I am an aspiring web developer based in Hokkaido, Japan.'
   );
 
+  function changeProfile(event) {
+    const { value } = event.target;
+    setProfile(value);
+  }
+
   const [experiences, setExperiences] = useState([
     {
+      id: 0,
       title: 'Translator',
       organization: 'Freelance',
-      date: '2021-Present',
+      dates: '2021-Present',
+      description: 'Translated web content for major Japanese firms',
+    },
+    {
+      id: 1,
+      title: 'Translator',
+      organization: 'Freelance',
+      dates: '2021-Present',
+      description: 'Translated web content for major Japanese firms',
+    },
+    {
+      id: 2,
+      title: 'Translator',
+      organization: 'Freelance',
+      dates: '2021-Present',
+      description: 'Translated web content for major Japanese firms',
+    },
+    {
+      id: 3,
+      title: 'Translator',
+      organization: 'Freelance',
+      dates: '2021-Present',
       description: 'Translated web content for major Japanese firms',
     },
   ]);
 
+  function changeExperiences(event, activeId) {
+    const { name, value } = event.target;
+    setExperiences((prevExperiences) =>
+      prevExperiences.map((item) => {
+        return item.id === activeId ? { ...item, [name]: value } : item;
+      })
+    );
+  }
+
+  function deleteExperience(activeId) {
+    setExperiences((prevExperiences) =>
+      prevExperiences.filter((item) => item.id !== activeId)
+    );
+  }
+
+  function createExperience(id) {
+    setExperiences((prevExp) => [
+      ...prevExp,
+      {
+        id: id,
+        title: '',
+        organization: '',
+        dates: '',
+        description: '',
+      },
+    ]);
+  }
+
   return (
     <>
-      <h1>Resume Wiz</h1>
+      <header>
+        <p id="service-name">ResumeWiz</p>
+        <IoSparkles size={50} style={{ color: '#646cff71' }} />
+      </header>
 
       <main>
         <section className="forms-container">
@@ -106,26 +233,49 @@ export default function App() {
           <EducationInputs
             education={education}
             changeEducation={changeEducation}
+            deleteEducation={deleteEducation}
+            createEducation={createEducation}
           />
-          <SkillsInputs skills={skills} changeSkills={changeSkills} />
+          <SkillsInputs
+            skills={skills}
+            changeSkills={changeSkills}
+            deleteSkill={deleteSkill}
+            createSkill={createSkill}
+          />
           <CertificationsInputs
             certifications={certifications}
             changeCertifications={changeCertifications}
+            deleteCertification={deleteCertification}
+            createCertification={createCertification}
           />
-          <ProfileInputs />
-          <JobInputs />
+          <ProfileInputs profile={profile} changeProfile={changeProfile} />
+          <JobInputs
+            experiences={experiences}
+            changeExperiences={changeExperiences}
+            deleteExperience={deleteExperience}
+            createExperience={createExperience}
+          />
         </section>
 
         <section className="resume">
           <Header personalDetails={personalDetails} />
-          <Contact personalDetails={personalDetails} />
-          <Education education={education} />
-          <Skills skills={skills} />
-          <Certifications certifications={certifications} />
-          <Profile profile={profile} />
-          <Experiences experiences={experiences} />
+          <section className="resume-body">
+            <section className="resume-body-L">
+              <Contact personalDetails={personalDetails} />
+              <Education education={education} />
+              <Skills skills={skills} />
+              <Certifications certifications={certifications} />
+            </section>
+            <section className="resume-body-R">
+              <Profile profile={profile} />
+              <Experiences experiences={experiences} />
+            </section>
+          </section>
         </section>
       </main>
+      <footer>
+        <p className="label">Remy Castella, 2024</p>
+      </footer>
     </>
   );
 }
