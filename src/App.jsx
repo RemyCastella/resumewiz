@@ -19,10 +19,10 @@ import { v4 as uuidv4 } from 'uuid';
 export default function App() {
   const [personalDetails, setPersonalDetails] = useState({
     fullName: 'Remy Castella',
-    jobTitle: 'Software Engineer',
+    jobTitle: 'Web Developer',
     tel: '080-7178-9696',
     email: 'remy.jpen@gmail.com',
-    website: '',
+    website: 'https://github.com/RemyCastella',
   });
 
   function changePersonalDetails(event) {
@@ -44,15 +44,9 @@ export default function App() {
     },
     {
       id: uuidv4(),
-      institution: 'University of Vermont',
-      degree: 'Bachelors of Science, Neuroscience',
-      dates: '2015-2019',
-    },
-    {
-      id: uuidv4(),
-      institution: 'University of Vermont',
-      degree: 'Bachelors of Science, Neuroscience',
-      dates: '2015-2019',
+      institution: 'Shanghai American School',
+      degree: 'High School Diploma',
+      dates: '2011-2015',
     },
   ]);
 
@@ -117,11 +111,7 @@ export default function App() {
 
   const [certifications, setCertifications] = useState([
     { id: 0, certification: 'JLPT N1' },
-    { id: 1, certification: 'JLPT N1' },
-    { id: 2, certification: 'JLPT N1' },
-    { id: 3, certification: 'JLPT N1' },
-    { id: 4, certification: 'JLPT N1' },
-    { id: 5, certification: 'JLPT N1' },
+    { id: 1, certification: '二級翻訳士' },
   ]);
 
   function changeCertifications(event, activeId) {
@@ -163,29 +153,23 @@ export default function App() {
       id: 0,
       title: 'Translator',
       organization: 'Freelance',
-      dates: '2021-Present',
-      description: 'Translated web content for major Japanese firms',
+      dates: 'September 2021-Present',
+      description:
+        'I mainly translate web content for major Japanese firms. I also have a book published.',
     },
     {
       id: 1,
       title: 'Translator',
-      organization: 'Freelance',
-      dates: '2021-Present',
-      description: 'Translated web content for major Japanese firms',
+      organization: 'Routing Systems Inc.',
+      dates: 'September 2021-May 2023',
+      description: `Translated the entire website and app of one of Japan's largest English learning services.`,
     },
     {
-      id: 2,
-      title: 'Translator',
-      organization: 'Freelance',
-      dates: '2021-Present',
-      description: 'Translated web content for major Japanese firms',
-    },
-    {
-      id: 3,
-      title: 'Translator',
-      organization: 'Freelance',
-      dates: '2021-Present',
-      description: 'Translated web content for major Japanese firms',
+      id: 1,
+      title: 'English Teacher',
+      organization: 'Trygroup Inc.',
+      dates: 'January 2020-October 2020',
+      description: `Taught English to children, from infants to teenagers, at one of Tokyo's most popular English schools.`,
     },
   ]);
 
@@ -274,7 +258,7 @@ export default function App() {
         </section>
       </main>
       <footer>
-        <p className="label">Remy Castella, 2024</p>
+        <p className="label">© 2024 Remy Castella. All rights reserved.</p>
       </footer>
     </>
   );
