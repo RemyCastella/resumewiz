@@ -33,7 +33,7 @@ export default function JobInputs({
   if (view === 'closed') {
     return (
       <div className="personal-detail-form">
-        <div className="form-header" onClick={() => setView('form')}>
+        <div className="form-header" onClick={() => setView('list')}>
           <h2>Experience</h2>
           <IoChevronForward size={30} />
         </div>
