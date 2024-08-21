@@ -1,8 +1,0 @@
-Challenges
-- Stop text from overflowing when screen size Challenges
-    - word-break: break-word && overflow-wrap: break-word;
-    - wrapped bullet point in span and made <p> a flex to avoid bullet point and text breaking separately
-    - still some unexpected behavior for vertical overflow, where full page isn't showing when you scroll down
-        -somehow fixed by not including height
-
-- DO NOT give numbers as ids and use them as indexes to retreive items. It lead to a big clusterf.
