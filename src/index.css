@@ -234,6 +234,11 @@ p.list-item {
   color: var(--dark-color);
 }
 
+p.list-item::before {
+  content: '\2666'; /* Unicode for the diamond symbol */
+  color: inherit; /* or any specific color */
+}
+
 section.header {
   padding-bottom: 2rem;
 }

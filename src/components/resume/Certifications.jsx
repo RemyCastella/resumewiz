@@ -4,7 +4,6 @@ export default function Certifications({ certifications }) {
   const elements = certifications.map((item) => {
     return (
       <p className="list-item" key={item.id}>
-        {item.certification && <span>&#9830;</span>}
         {item.certification}
       </p>
     );

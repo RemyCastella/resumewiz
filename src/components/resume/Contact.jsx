@@ -7,24 +7,9 @@ export default function Contact({ personalDetails }) {
     <section className="contact">
       <h2 className="section-heading">CONTACT</h2>
 
-      {tel && (
-        <p className="list-item">
-          <span>&#9830;</span>
-          {tel}
-        </p>
-      )}
-      {email && (
-        <p className="list-item">
-          <span>&#9830;</span>
-          {email}
-        </p>
-      )}
-      {website && (
-        <p className="list-item">
-          <span>&#9830;</span>
-          {website}
-        </p>
-      )}
+      {tel && <p className="list-item">{tel}</p>}
+      {email && <p className="list-item">{email}</p>}
+      {website && <p className="list-item">{website}</p>}
     </section>
   );
 }
