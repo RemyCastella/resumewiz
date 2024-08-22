@@ -235,7 +235,7 @@ p.list-item {
 }
 
 p.list-item::before {
-  content: '\2666'; /* Unicode for the diamond symbol */
+  content: '\25C6'; /* Unicode for the diamond symbol */
   color: inherit; /* or any specific color */
 }
 
