@@ -268,6 +268,10 @@ section.experience {
     align-items: center;
   }
 
+  #service-name {
+    font-size: 3rem;
+  }
+
   .personal-detail-form {
     width: 90vw;
   }
