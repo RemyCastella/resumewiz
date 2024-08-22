@@ -261,3 +261,18 @@ section.experience {
   margin-bottom: 2rem;
   max-width: 100%;
 }
+
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .personal-detail-form {
+    width: 100vw;
+  }
+
+  .resume {
+    width: 90vw;
+  }
+}
