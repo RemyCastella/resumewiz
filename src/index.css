@@ -231,6 +231,7 @@ p.description {
 p.list-item {
   display: flex;
   gap: 0.5rem;
+  color: var(--dark-color);
 }
 
 section.header {
@@ -278,9 +279,5 @@ section.experience {
 
   .resume {
     width: 90vw;
-  }
-
-  p.list-item {
-    color: black;
   }
 }
