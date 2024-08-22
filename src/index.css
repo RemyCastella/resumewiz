@@ -279,4 +279,8 @@ section.experience {
   .resume {
     width: 90vw;
   }
+
+  p.list-item {
+    color: black;
+  }
 }
