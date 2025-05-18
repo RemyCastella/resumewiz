@@ -14,7 +14,7 @@ import { EducationData, CertificationData, SkillData, ExperienceData } from "../
 //   return array[0];
 // }
 
-export function getActiveItem<
+export default function getActiveItem<
   T extends { id: number | string }
 >(
   list: T[],
