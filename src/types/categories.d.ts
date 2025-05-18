@@ -1,4 +1,4 @@
-interface PersonalData {
+export interface PersonalData {
   fullName: string,
   jobTitle: string,
   email: string,
@@ -6,26 +6,26 @@ interface PersonalData {
   website: string
 }
 
-interface EducationData {
+export interface EducationData {
   id: string,
   institution: string,
   degree: string,
   dates: string
 }
 
-interface SkillData {
+export interface SkillData {
   id: string,
   skill: string
 }
 
-interface CertificationData {
+export interface CertificationData {
   id: number,
   certification: string
 }
 
-type ProfileData = string
+export type ProfileData = string
 
-interface ExperienceData {
+export interface ExperienceData {
   id: number,
   title: string,
   description: string,
