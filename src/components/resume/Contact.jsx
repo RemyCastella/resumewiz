@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function Contact({ personalDetails }) {
+
   const { tel, email, website } = personalDetails;
 
   return (

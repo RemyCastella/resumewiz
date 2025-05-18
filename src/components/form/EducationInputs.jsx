@@ -10,6 +10,8 @@ export default function EducationInputs({
   deleteEducation,
   createEducation,
 }) {
+  console.log(education);
+
   const [view, setView] = useState('closed');
   const [activeId, setActiveId] = useState(education[0].id);
   const { institution, degree, dates } = getActiveItem(education, activeId);

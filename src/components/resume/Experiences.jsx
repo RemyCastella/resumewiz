@@ -1,6 +1,9 @@
 import React from 'react';
 
 export default function Experiences({ experiences }) {
+
+  console.log(experiences);
+
   const elements = experiences.map((item) => (
     <section className="experience" key={item.id}>
       <p className="experience-title">{item.title.toUpperCase()}</p>

@@ -1,6 +1,8 @@
 import React from 'react';
 
 export default function Skills({ skills }) {
+  console.log(skills);
+
   const elements = skills.map((item) => {
     return (
       <p className="list-item" key={item.id}>
