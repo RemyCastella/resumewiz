@@ -1,6 +1,11 @@
 import React from 'react';
+import { PersonalData } from '../../types/categories';
 
-export default function Header({ personalDetails }) {
+interface HeaderProps {
+  personalDetails: PersonalData
+}
+
+export default function Header({ personalDetails }: HeaderProps) {
   const { fullName, jobTitle } = personalDetails;
 
   return (
