@@ -1,4 +1,4 @@
-import { EducationData, CertificationData, SkillData, ExperienceData } from "../types/categories.js"
+// import { EducationData, CertificationData, SkillData, ExperienceData } from "../types/categories.js"
 
 // export default function getActiveItem(list: EducationData[] | CertificationData[] | SkillData[] | ExperienceData[] , activeId: number | string): EducationData | CertificationData | SkillData | ExperienceData {
 

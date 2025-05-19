@@ -10,8 +10,6 @@ export default function CertificationsInputs({
   deleteCertification,
   createCertification,
 }) {
-  console.log(certifications);
-
   const [view, setView] = useState('closed');
   const [activeId, setActiveId] = useState(certifications[0].id);
   const { certification } = getActiveItem(certifications, activeId);
