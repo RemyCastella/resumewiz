@@ -1,6 +1,11 @@
 import React from 'react';
+import { CertificationData } from '../../types/categories';
 
-export default function Certifications({ certifications }) {
+interface CertificationsProps {
+  certifications: CertificationData[]
+}
+
+export default function Certifications({ certifications }: CertificationsProps) {
   const elements = certifications.map((item) => {
     return (
       <p className="list-item" key={item.id}>
