@@ -1,6 +1,11 @@
 import React from 'react';
+import { SkillData } from '../../types/categories';
 
-export default function Skills({ skills }) {
+interface SkillsProps {
+  skills: SkillData[]
+}
+
+export default function Skills({ skills }: SkillsProps) {
 
   const elements = skills.map((item) => {
     return (
