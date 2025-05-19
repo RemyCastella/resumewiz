@@ -1,6 +1,11 @@
 import React from 'react';
+import { ExperienceData } from '../../types/categories';
 
-export default function Experiences({ experiences }) {
+interface ExperiencesProps {
+  experiences: ExperienceData[]
+}
+
+export default function Experiences({ experiences }: ExperiencesProps) {
 
   const elements = experiences.map((item) => (
     <section className="experience" key={item.id}>
