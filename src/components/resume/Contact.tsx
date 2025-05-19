@@ -1,6 +1,11 @@
 import React from 'react';
+import { PersonalData } from '../../types/categories';
 
-export default function Contact({ personalDetails }) {
+interface ContactProps {
+  personalDetails: PersonalData
+}
+
+export default function Contact({ personalDetails }: ContactProps) {
 
   const { tel, email, website } = personalDetails;
 
