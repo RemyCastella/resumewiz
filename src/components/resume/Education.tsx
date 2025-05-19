@@ -1,6 +1,11 @@
 import React from 'react';
+import { EducationData } from '../../types/categories';
 
-export default function Education({ education }) {
+interface EducationProps {
+  education: EducationData[]
+}
+
+export default function Education({ education }: EducationProps) {
   const elements = education.map((item) => (
     <section key={item.id}>
       <h3 className="institution-name">{item.institution}</h3>
