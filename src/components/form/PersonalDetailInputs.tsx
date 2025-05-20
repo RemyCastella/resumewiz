@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { IoChevronForward, IoChevronDownOutline } from 'react-icons/io5';
+import { PersonalData } from '../../types/categories';
+
+interface PersonalDataInputsProps {
+  personalDetails: PersonalData,
+  changePersonalDetails: (event: ChangeEvent<HTMLInputElement>) => void
+}
+
 
 export default function PersonalDetailInputs({
   personalDetails,
   changePersonalDetails,
-}) {
-  const [view, setView] = useState('form');
+}: PersonalDataInputsProps) {
+  const [view, setView] = useState<string>('form');
 
   if (view === 'closed') {
     return (
