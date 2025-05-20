@@ -1,20 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent} from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import getActiveItem from '../../utils/getActiveItem';
 import { FaCheckCircle, FaTrashAlt } from 'react-icons/fa';
 import { IoChevronForward, IoChevronDownOutline } from 'react-icons/io5';
+import { CertificationData } from '../../types/categories';
+
+interface CertificationsInputsProps {
+  certifications: CertificationData[],
+  changeCertifications: (event: ChangeEvent<HTMLInputElement>, id: string) => void,
+  deleteCertification: (id: string) => void,
+  createCertification: (id: string) => void
+}
 
 export default function CertificationsInputs({
   certifications,
   changeCertifications,
   deleteCertification,
   createCertification,
-}) {
-  const [view, setView] = useState('closed');
-  const [activeId, setActiveId] = useState(certifications[0].id);
-  const { certification } = getActiveItem(certifications, activeId);
+}: CertificationsInputsProps) {
+  const [view, setView] = useState<string>('closed');
+  const [activeId, setActiveId] = useState<string>(certifications[0].id);
+  const { certification } = getActiveItem<CertificationData>(certifications, activeId, {
+    id: "",
+    certification: ""
+  });
 
-  function setNewActiveIdOnDelete(list, activeId) {
+  function setNewActiveIdOnDelete(list: CertificationData[], activeId: string) {
     if (list.length === 1) {
       //Initialize new item
       const newId = uuidv4();

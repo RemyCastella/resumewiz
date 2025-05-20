@@ -19,7 +19,7 @@ export interface SkillData {
 }
 
 export interface CertificationData {
-  id: number,
+  id: string,
   certification: string
 }
 
