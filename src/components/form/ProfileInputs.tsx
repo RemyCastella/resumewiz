@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { IoChevronForward, IoChevronDownOutline } from 'react-icons/io5';
+import { ProfileData } from '../../types/categories';
 
-export default function ProfileInputs({ profile, changeProfile }) {
-  const [view, setView] = useState('closed');
+interface ProfileInputsProps {
+  profile: ProfileData,
+  changeProfile: (event: ChangeEvent<HTMLTextAreaElement>) => void
+}
+
+
+export default function ProfileInputs({ profile, changeProfile }: ProfileInputsProps) {
+  const [view, setView] = useState<string>('closed');
 
   if (view === 'closed') {
     return (
