@@ -1,20 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import getActiveItem from '../../utils/getActiveItem';
 import { IoChevronForward, IoChevronDownOutline } from 'react-icons/io5';
 import { FaCheckCircle, FaTrashAlt } from 'react-icons/fa';
 import { v4 as uuidv4 } from 'uuid';
+import { SkillData } from '../../types/categories';
+
+interface SkillsInputsProps {
+  skills: SkillData[],
+  changeSkills: (event: ChangeEvent<HTMLInputElement>, id: string) => void,
+  deleteSkill: (id: string) => void,
+  createSkill: (id: string) => void
+}
 
 export default function SkillsInputs({
   skills,
   changeSkills,
   deleteSkill,
   createSkill,
-}) {
-  const [view, setView] = useState('closed');
-  const [activeId, setActiveId] = useState(skills[0].id);
-  const { skill } = getActiveItem(skills, activeId);
+}: SkillsInputsProps) {
+  const [view, setView] = useState<string>('closed');
+  const [activeId, setActiveId] = useState<string>(skills[0].id);
+  const { skill } = getActiveItem<SkillData>(skills, activeId, {
+    id: "",
+    skill: ""
+  });
 
-  function setNewActiveIdOnDelete(list, activeId) {
+  function setNewActiveIdOnDelete(list: SkillData[], activeId: string) {
     if (list.length === 1) {
       //Initialize new item
       const newId = uuidv4();
@@ -40,39 +51,37 @@ export default function SkillsInputs({
 
   if (view === 'list') {
     return (
-      <>
-        <div className="personal-detail-form">
-          <div className="form-header" onClick={() => setView('closed')}>
-            <h2>Skills</h2>
-            <IoChevronDownOutline size={30} />
-          </div>
-          <div className="form-items">
-            {skills.map((item) => (
-              <div
-                className="form-item"
-                onClick={() => {
-                  setActiveId(item.id);
-                  setView('form');
-                }}
-                key={item.id}
-              >
-                <p className="list-item">{item.skill || '+ Add Info'}</p>
-              </div>
-            ))}
-            <p
-              className="form-item-create"
+      <div className="personal-detail-form">
+        <div className="form-header" onClick={() => setView('closed')}>
+          <h2>Skills</h2>
+          <IoChevronDownOutline size={30} />
+        </div>
+        <div className="form-items">
+          {skills.map((item) => (
+            <div
+              className="form-item"
               onClick={() => {
-                const newId = uuidv4();
-                setActiveId(newId);
-                createSkill(newId);
+                setActiveId(item.id);
                 setView('form');
               }}
+              key={item.id}
             >
-              + Add Item
-            </p>
-          </div>
+              <p className="list-item">{item.skill || '+ Add Info'}</p>
+            </div>
+          ))}
+          <p
+            className="form-item-create"
+            onClick={() => {
+              const newId = uuidv4();
+              setActiveId(newId);
+              createSkill(newId);
+              setView('form');
+            }}
+          >
+            + Add Item
+          </p>
         </div>
-      </>
+      </div>
     );
   }
 
