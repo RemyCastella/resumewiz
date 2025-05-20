@@ -7,7 +7,7 @@ interface ExperiencesProps {
 
 export default function Experiences({ experiences }: ExperiencesProps) {
 
-  const elements = experiences.map((item) => (
+  const elements = experiences.reverse().map((item) => (
     <section className="experience" key={item.id}>
       <p className="experience-title">{item.title.toUpperCase()}</p>
       <p className="label">{item.organization}</p>

@@ -26,7 +26,7 @@ export interface CertificationData {
 export type ProfileData = string
 
 export interface ExperienceData {
-  id: number,
+  id: string,
   title: string,
   description: string,
   organization: string,

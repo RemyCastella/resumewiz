@@ -150,7 +150,7 @@ export default function App() {
 
   const [experiences, setExperiences] = useState([
     {
-      id: 0,
+      id: uuidv4(),
       title: 'Translator',
       organization: 'Freelance',
       dates: 'September 2021-Present',
@@ -158,14 +158,14 @@ export default function App() {
         'I mainly translate web content for major Japanese firms. I also have a book published.',
     },
     {
-      id: 1,
+      id: uuidv4(),
       title: 'Translator',
       organization: 'Routing Systems Inc.',
       dates: 'September 2021-May 2023',
       description: `Translated the entire website and app of one of Japan's largest English learning services.`,
     },
     {
-      id: 1,
+      id: uuidv4(),
       title: 'English Teacher',
       organization: 'Trygroup Inc.',
       dates: 'January 2020-October 2020',

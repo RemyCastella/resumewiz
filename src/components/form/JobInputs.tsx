@@ -1,23 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import getActiveItem from '../../utils/getActiveItem';
 import { FaCheckCircle, FaTrashAlt } from 'react-icons/fa';
 import { IoChevronForward, IoChevronDownOutline } from 'react-icons/io5';
+import { ExperienceData } from '../../types/categories';
+
+interface JobInputsProps {
+  experiences: ExperienceData[],
+  changeExperiences: (event: ChangeEvent, id: string) => void,
+  deleteExperience: (id: string) => void,
+  createExperience: (id: string) => void
+}
 
 export default function JobInputs({
   experiences,
   changeExperiences,
   deleteExperience,
   createExperience,
-}) {
-  const [view, setView] = useState('closed');
-  const [activeId, setActiveId] = useState(experiences[0].id);
+}: JobInputsProps) {
+  const [view, setView] = useState<string>('closed');
+  const [activeId, setActiveId] = useState<string>(experiences[0].id);
   const { title, organization, dates, description } = getActiveItem(
     experiences,
-    activeId
+    activeId,
+    {
+      id: "",
+      title: "",
+      description: "",
+      organization: "",
+      dates: ""
+    }
   );
 
-  function setNewActiveIdOnDelete(list, activeId) {
+  function setNewActiveIdOnDelete(list: ExperienceData[], activeId: string) {
     if (list.length === 1) {
       //Initialize new item
       const newId = uuidv4();
