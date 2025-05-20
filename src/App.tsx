@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useState, ChangeEvent } from 'react';
+
+// Inputs components
 import PersonalDetailInputs from './components/form/PersonalDetailInputs';
 import EducationInputs from './components/form/EducationInputs';
 import SkillsInputs from './components/form/SkillsInputs';
 import CertificationsInputs from './components/form/CertificationsInputs';
-CertificationsInputs;
 import ProfileInputs from './components/form/ProfileInputs';
 import JobInputs from './components/form/JobInputs';
+
+// Resume display components
 import Header from './components/resume/Header';
 import Contact from './components/resume/Contact';
 import Education from './components/resume/Education';
@@ -13,11 +16,15 @@ import Skills from './components/resume/Skills';
 import Certifications from './components/resume/Certifications';
 import Profile from './components/resume/Profile';
 import Experiences from './components/resume/Experiences';
+
+// Resume data types
+import { PersonalData, EducationData, SkillData, CertificationData, ProfileData, ExperienceData} from './types/categories';
+
 import { IoSparkles } from 'react-icons/io5';
 import { v4 as uuidv4 } from 'uuid';
 
 export default function App() {
-  const [personalDetails, setPersonalDetails] = useState({
+  const [personalDetails, setPersonalDetails] = useState<PersonalData>({
     fullName: 'Remy Castella',
     jobTitle: 'Web Developer',
     tel: '080-7178-9696',
@@ -25,7 +32,7 @@ export default function App() {
     website: 'https://github.com/RemyCastella',
   });
 
-  function changePersonalDetails(event) {
+  function changePersonalDetails(event: ChangeEvent<HTMLInputElement>) {
     const { value, name } = event.target;
     setPersonalDetails((prevDetails) => {
       return {
@@ -35,7 +42,7 @@ export default function App() {
     });
   }
 
-  const [education, setEducation] = useState([
+  const [education, setEducation] = useState<EducationData[]>([
     {
       id: uuidv4(),
       institution: 'University of Vermont',
@@ -50,7 +57,7 @@ export default function App() {
     },
   ]);
 
-  function changeEducation(event, activeId) {
+  function changeEducation(event: ChangeEvent<HTMLInputElement>, activeId: string) {
     const { name, value } = event.target;
     setEducation((prevEducation) =>
       prevEducation.map((item) => {
@@ -59,13 +66,13 @@ export default function App() {
     );
   }
 
-  function deleteEducation(activeId) {
+  function deleteEducation(activeId: string) {
     setEducation((prevEducation) =>
       prevEducation.filter((item) => item.id !== activeId)
     );
   }
 
-  function createEducation(id) {
+  function createEducation(id: string) {
     setEducation((prevEd) => [
       ...prevEd,
       {
@@ -77,14 +84,14 @@ export default function App() {
     ]);
   }
 
-  const [skills, setSkills] = useState([
+  const [skills, setSkills] = useState<SkillData[]>([
     { id: uuidv4(), skill: 'HTML' },
     { id: uuidv4(), skill: 'CSS' },
     { id: uuidv4(), skill: 'JavaScript' },
     { id: uuidv4(), skill: 'React' },
   ]);
 
-  function changeSkills(event, activeId) {
+  function changeSkills(event: ChangeEvent<HTMLInputElement>, activeId: string) {
     const { name, value } = event.target;
     setSkills((prevSkills) =>
       prevSkills.map((item) => {
@@ -93,13 +100,13 @@ export default function App() {
     );
   }
 
-  function deleteSkill(activeId) {
+  function deleteSkill(activeId: string) {
     setSkills((prevSkills) =>
       prevSkills.filter((item) => item.id !== activeId)
     );
   }
 
-  function createSkill(id) {
+  function createSkill(id: string) {
     setSkills((prevSkills) => [
       ...prevSkills,
       {
@@ -109,12 +116,12 @@ export default function App() {
     ]);
   }
 
-  const [certifications, setCertifications] = useState([
-    { id: 0, certification: 'JLPT N1' },
-    { id: 1, certification: '二級翻訳士' },
+  const [certifications, setCertifications] = useState<CertificationData[]>([
+    { id: uuidv4(), certification: 'JLPT N1' },
+    { id: uuidv4(), certification: '二級翻訳士' },
   ]);
 
-  function changeCertifications(event, activeId) {
+  function changeCertifications(event: ChangeEvent<HTMLInputElement>, activeId: string) {
     const { name, value } = event.target;
     setCertifications((prevSkills) =>
       prevSkills.map((item) => {
@@ -123,13 +130,13 @@ export default function App() {
     );
   }
 
-  function deleteCertification(activeId) {
+  function deleteCertification(activeId: string) {
     setCertifications((prevCerts) =>
       prevCerts.filter((item) => item.id !== activeId)
     );
   }
 
-  function createCertification(id) {
+  function createCertification(id: string) {
     setCertifications((prevCert) => [
       ...prevCert,
       {
@@ -139,16 +146,16 @@ export default function App() {
     ]);
   }
 
-  const [profile, setProfile] = useState(
+  const [profile, setProfile] = useState<ProfileData>(
     'I am an aspiring web developer based in Hokkaido, Japan.'
   );
 
-  function changeProfile(event) {
+  function changeProfile(event: ChangeEvent<HTMLTextAreaElement>) {
     const { value } = event.target;
     setProfile(value);
   }
 
-  const [experiences, setExperiences] = useState([
+  const [experiences, setExperiences] = useState<ExperienceData[]>([
     {
       id: uuidv4(),
       title: 'Translator',
@@ -173,7 +180,7 @@ export default function App() {
     },
   ]);
 
-  function changeExperiences(event, activeId) {
+  function changeExperiences(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, activeId: string) {
     const { name, value } = event.target;
     setExperiences((prevExperiences) =>
       prevExperiences.map((item) => {
@@ -182,13 +189,13 @@ export default function App() {
     );
   }
 
-  function deleteExperience(activeId) {
+  function deleteExperience(activeId: string) {
     setExperiences((prevExperiences) =>
       prevExperiences.filter((item) => item.id !== activeId)
     );
   }
 
-  function createExperience(id) {
+  function createExperience(id: string) {
     setExperiences((prevExp) => [
       ...prevExp,
       {

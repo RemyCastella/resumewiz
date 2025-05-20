@@ -7,7 +7,7 @@ import { ExperienceData } from '../../types/categories';
 
 interface JobInputsProps {
   experiences: ExperienceData[],
-  changeExperiences: (event: ChangeEvent, id: string) => void,
+  changeExperiences: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, id: string) => void,
   deleteExperience: (id: string) => void,
   createExperience: (id: string) => void
 }
