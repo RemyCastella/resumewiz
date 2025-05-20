@@ -1,20 +1,33 @@
-import React, { act, useState } from 'react';
+import React, { act, useState, ChangeEvent } from 'react';
 import getActiveItem from '../../utils/getActiveItem';
 import { IoChevronForward, IoChevronDownOutline } from 'react-icons/io5';
 import { FaCheckCircle, FaTrashAlt } from 'react-icons/fa';
 import { v4 as uuidv4 } from 'uuid';
+import { EducationData } from '../../types/categories';
+
+interface EducationInputsProps {
+  education: EducationData[],
+  changeEducation: (event: ChangeEvent<HTMLInputElement>, id: string) => void,
+  deleteEducation: (id: string) => void,
+  createEducation: (id: string) => void
+}
 
 export default function EducationInputs({
   education,
   changeEducation,
   deleteEducation,
   createEducation,
-}) {
-  const [view, setView] = useState('closed');
-  const [activeId, setActiveId] = useState(education[0].id);
-  const { institution, degree, dates } = getActiveItem(education, activeId);
+}: EducationInputsProps) {
+  const [view, setView] = useState<string>('closed');
+  const [activeId, setActiveId] = useState<string>(education[0].id);
+  const { institution, degree, dates } = getActiveItem<EducationData>(education, activeId, {
+    id: "",
+    institution: "",
+    degree: "",
+    dates: ""
+  });
 
-  function setNewActiveIdOnDelete(list, activeId) {
+  function setNewActiveIdOnDelete(list: EducationData[], activeId: string) {
     if (list.length === 1) {
       //Initialize new item
       const newId = uuidv4();
